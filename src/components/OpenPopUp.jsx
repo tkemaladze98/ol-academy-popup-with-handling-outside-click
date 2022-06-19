@@ -5,7 +5,7 @@ import PopUp from "./PopUp";
 function OpenPopUp() {
   const [showPopUp, setShowPopUp] = useState(false);
 
-  const openPopUp = () => {
+  const closePopUp = () => {
     setShowPopUp(false);
   };
 
@@ -15,7 +15,7 @@ function OpenPopUp() {
       <button className="open-btn" onClick={() => setShowPopUp(true)}>
         Open PopUp
       </button>
-      {showPopUp && <PopUp openPopUp={openPopUp} />}
+      {showPopUp && <PopUp closePopUp={closePopUp} />}
     </div>
   );
 }

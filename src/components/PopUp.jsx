@@ -4,22 +4,27 @@ import "../styles/popUp.scss";
 
 function PopUp(props) {
   const popup = useRef(null);
+
   const handleClick = (e) => {
-    if(!popup.current.contains(e.target)){
-        props.openPopUp()
+    if (popup.current !== null) {
+      if (!popup.current.contains(e.target)) {
+        props.closePopUp();
+      }
     }
   };
 
   useEffect(() => {
     document.addEventListener("click", handleClick);
 
-    return document.removeEventListener("click", handleClick);
+    return function cleanUp() {
+      document.removeEventListener("click", handleClick);
+    };
   });
 
   return (
-    <div className="outside" onClick={(e) => handleClick(e)}>
+    <div className="outside">
       <div className="inside" ref={popup}>
-        <button className="close-btn" onClick={() => props.openPopUp()}>
+        <button className="close-btn" onClick={() => props.closePopUp()}>
           <AiOutlineClose />
         </button>
         <h2>This is PopUp</h2>
