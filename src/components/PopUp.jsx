@@ -6,7 +6,7 @@ function PopUp(props) {
   const popupRef = useRef(null);
 
   const handleClick = (e) => {
-    if (popupRef.current !== null && !popupRef.current.contains(e.target)) {
+    if (!popupRef.current?.contains(e.target)) {
       props.closePopUp();
     }
   };
