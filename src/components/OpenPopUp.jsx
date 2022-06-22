@@ -3,19 +3,19 @@ import "../styles/popUp.scss";
 import PopUp from "./PopUp";
 
 function OpenPopUp() {
-  const [showPopUp, setShowPopUp] = useState(false);
+  const [isOpenPopUp, setIsOpenPopUp] = useState(false);
 
   const closePopUp = () => {
-    setShowPopUp(false);
+    setIsOpenPopUp(false);
   };
 
   return (
     <div className="popup">
       <h1>Hello World</h1>
-      <button className="open-btn" onClick={() => setShowPopUp(true)}>
+      <button className="open-btn" onClick={() => setIsOpenPopUp(true)}>
         Open PopUp
       </button>
-      {showPopUp && <PopUp closePopUp={closePopUp} />}
+      {isOpenPopUp && <PopUp closePopUp={closePopUp} />}
     </div>
   );
 }

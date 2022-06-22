@@ -3,13 +3,11 @@ import { AiOutlineClose } from "react-icons/ai";
 import "../styles/popUp.scss";
 
 function PopUp(props) {
-  const popup = useRef(null);
+  const popupRef = useRef(null);
 
   const handleClick = (e) => {
-    if (popup.current !== null) {
-      if (!popup.current.contains(e.target)) {
-        props.closePopUp();
-      }
+    if (popupRef.current !== null && !popupRef.current.contains(e.target)) {
+      props.closePopUp();
     }
   };
 
@@ -23,7 +21,7 @@ function PopUp(props) {
 
   return (
     <div className="outside">
-      <div className="inside" ref={popup}>
+      <div className="inside" ref={popupRef}>
         <button className="close-btn" onClick={() => props.closePopUp()}>
           <AiOutlineClose />
         </button>
