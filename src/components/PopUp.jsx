@@ -17,7 +17,7 @@ function PopUp(props) {
     return function cleanUp() {
       document.removeEventListener("click", handleClick);
     };
-  });
+  }, []);
 
   return (
     <div className="outside">
