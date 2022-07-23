@@ -5,19 +5,18 @@ import "../styles/popUp.scss";
 function PopUp(props) {
   const popupRef = useRef(null);
 
-  const handleClick = (e) => {
-    if (!popupRef.current?.contains(e.target)) {
-      props.closePopUp();
-    }
-  };
-
   useEffect(() => {
+    const handleClick = (e) => {
+      if (!popupRef.current?.contains(e.target)) {
+        props.closePopUp();
+      }
+    };
     document.addEventListener("click", handleClick);
 
     return function cleanUp() {
       document.removeEventListener("click", handleClick);
     };
-  }, []);
+  }, [props]);
 
   return (
     <div className="outside">
